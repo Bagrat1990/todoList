@@ -7,28 +7,29 @@ function Todoform({ onAdd }) {
     setText(e.target.value);
   }
   return (
-    <form
-      className="inputForm"
-      //style={{ textAlign: "center", marginTop: "50px" }}
-      onSubmit={(e) => {
-        e.preventDefault();
-        onAdd(text);
-        setText("");
-      }}
-    >
-      {" "}
-      <div>
-        <input
-          className="textInput"
-          type="text"
-          value={text}
-          onChange={addTodo}
-        />
-      </div>
-      <div>
-        <button className="addButton">Add</button>
-      </div>
-    </form>
+    <div className="inputForm">
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          onAdd(text);
+          setText("");
+        }}
+      >
+        {" "}
+        <div>
+          <input
+            className="textInput"
+            placeholder="Write here"
+            type="text"
+            value={text}
+            onChange={addTodo}
+          />
+        </div>
+        <div>
+          <button className="addButton">Add</button>
+        </div>
+      </form>
+    </div>
   );
 }
 export default Todoform;

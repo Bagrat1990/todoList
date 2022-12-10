@@ -1,0 +1,42 @@
+
+.todo{
+    display: flex;
+   
+    width: 86%;
+    height: 72px;
+    border-bottom: 1px solid #E5E5E5;
+   
+    margin-left: 80px;
+}
+.todoCheckbox {
+    position:absolute;
+    background: #008594;
+    margin-top: 32px;
+  
+    
+}
+.todoText{
+margin-left: 45px;
+margin-top: 23px;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 32px;
+/* identical to box height, or 178% */
+
+text-transform: capitalize;
+
+color: #666666;
+}
+.todoButton{
+   position:absolute;
+   left: 1143px;
+   margin-left:50px;
+    background-color: white;
+    margin-top: 24px;
+    border: #E5E5E5;
+    font-size: 27px;
+    color: #174348;
+   
+}
