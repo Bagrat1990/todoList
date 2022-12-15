@@ -4,12 +4,13 @@ import "./App.css";
 import AlertDialog from "./components/AlertDialog";
 import Todoform from "./components/TodoForm";
 import TodoList from "./components/TodoList";
-
+let deleteTodo
 function App() {
   const [todos, setTodos] = useState(
     JSON.parse(localStorage.getItem("is-open")) || []
   );
   const [isHide, setIsHide] = useState(false);
+  const [open, setOpen] = useState(false);
 
   localStorage.setItem("is-open", JSON.stringify([...todos]));
   function onAdd(text) {
@@ -24,10 +25,16 @@ function App() {
       ]);
     }
   }
-
+  console.log(deleteTodo)
   function onDelete(todo) {
-    setTodos(todos.filter((item) => item.id !== todo.id));
+    deleteTodo = todo
+    
+      setOpen(true);
+   
+  
+   
   }
+  const err = <div>asdf</div>
 
   function onChange(checkedTodo) {
     setTodos(
@@ -44,6 +51,19 @@ function App() {
     setIsHide(!isHide);
   }
 
+  function deleteItem (todoo){
+    setTodos(todos.filter((item) => item.id !== todoo.id));
+    setOpen(false)
+   
+   
+    
+  }
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+  
+
   return (
     <section className="main">
       <div className="hideBox">
@@ -51,6 +71,7 @@ function App() {
         <p>Hide input</p>
       </div>
       <span className="spanText">Task</span>
+      <AlertDialog onYes={()=>deleteItem(deleteTodo)} onClose = {handleClose} open = {open}  />
       <Todoform todos={todos} onAdd={onAdd} />
       <TodoList
         todos={todos}
@@ -58,6 +79,7 @@ function App() {
         onChange={onChange}
         isHide={isHide}
       />
+      {err}
     </section>
   );
 }
